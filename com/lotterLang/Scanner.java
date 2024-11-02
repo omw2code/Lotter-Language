@@ -77,6 +77,7 @@ class Scanner
             case '\n': 
                 line++;
                 break;
+            case '"': string(); break; // we hit a " so its a string
             default:
                 Lotter.error(line, "Unexpected character.");
                 break;
@@ -121,5 +122,24 @@ class Scanner
     {
         //implement this
         return false;
+    }
+
+    private void string() {
+        while(peek() != '"' && !isAtEnd())
+        {
+            if (peek() == '\n') line++;
+            advance();
+        }
+
+        // gracefully handle running out of import before a closing "
+        if(isAtEnd()) {
+            Lotter.error(line, "Unterminated string.");
+            return;
+        }
+
+        advance(); // position will now be the closing "
+
+        String value = source.substring(start + 1, current - 1); // just getting rid of the quotes
+        addToken(STRING, value);
     }
 }
