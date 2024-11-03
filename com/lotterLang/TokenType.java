@@ -1,6 +1,7 @@
 package com.lotterLang;
 
-public enum TokenType {
+public enum TokenType 
+{
     // single character tokens
     LEFT_PAREN, RIGHT_PAREN, 
     LEFT_CURLY, RIGHT_CURLY,
