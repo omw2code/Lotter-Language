@@ -97,6 +97,7 @@ private void scanToken()
             {
                 while(peek() != '\n' && !isAtEnd()) advance();
             }
+            //TODO: Add block comments: /* ... */
             else 
             {
                 addToken(SLASH);

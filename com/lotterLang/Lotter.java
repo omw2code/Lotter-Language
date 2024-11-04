@@ -11,7 +11,8 @@ import java.util.List;
 public class Lotter 
 {
 static boolean hadError = false;
-public static void main(String[] args) throws IOException {
+public static void main(String[] args) throws IOException 
+{
     if(args.length > 1) {
         System.out.println("Usage: Lotter [script]");
         System.exit(64);
@@ -24,7 +25,8 @@ public static void main(String[] args) throws IOException {
 
 // if a file is passed in as an arg, read in the bytes of the 
 // file and create a new String from the file
-private static void runFile(String path) throws IOException {
+private static void runFile(String path) throws IOException 
+{
     byte[] bytes = Files.readAllBytes(Paths.get(path));
     run(new String(bytes, Charset.defaultCharset()));
     if(hadError) System.exit(65);
@@ -33,7 +35,8 @@ private static void runFile(String path) throws IOException {
 // REPL
 // if no args are passed in, run the interpreter interactively
 // from the command line
-private static void runPrompt() throws IOException {
+private static void runPrompt() throws IOException 
+{
     InputStreamReader input = new InputStreamReader(System.in);
     BufferedReader reader = new BufferedReader(input);
 
@@ -47,7 +50,8 @@ private static void runPrompt() throws IOException {
 }
 
 // run the file/prompt and tokenize their contents
-private static void run(String source) {
+private static void run(String source) 
+{
     Scanner scanner = new Scanner(source);
     List<Token> tokens = scanner.scanTokens();
 
@@ -57,12 +61,14 @@ private static void run(String source) {
 }
 
 // error handling
-static void error(int line, String message) {
+static void error(int line, String message) 
+{
     report(line, " ", message);
 }
 
 // outputting the error 
-private static void report(int line, String where, String message) {
+private static void report(int line, String where, String message) 
+{
     System.err.println(
         "[line " + line + "] Error" + where + ": " + message
     );
