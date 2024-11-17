@@ -41,7 +41,7 @@ private static void defineAst(String outputDir, String baseName, List<String> ty
     writer.println("package com.lotterLang;");
     writer.println("import java.util.List;");
     writer.println();
-    writer.println("abstract class " + baseName);
+    writer.println("public abstract class " + baseName);
     writer.println("{");
 
     //visitor pattern
@@ -66,7 +66,7 @@ private static void defineAst(String outputDir, String baseName, List<String> ty
 
 private static void defineVisitor(PrintWriter writer, String baseName, List<String> types)
 {
-    writer.println("    interface Visitor<R> {");
+    writer.println("    public interface Visitor<R> {");
 
     for (String type : types)
     {
@@ -80,7 +80,7 @@ private static void defineVisitor(PrintWriter writer, String baseName, List<Stri
 private static void defineType(PrintWriter writer, String baseName, String className, String attributeList)
 {
 
-    writer.println("static class " + className + " extends " + baseName);
+    writer.println("public static class " + className + " extends " + baseName);
     writer.println("{");
 
     // visitor pattern
@@ -91,7 +91,7 @@ private static void defineType(PrintWriter writer, String baseName, String class
     writer.println();
 
     // constructor
-    writer.println("    "+ className + "(" + attributeList + ") {");
+    writer.println("    public "+ className + "(" + attributeList + ") {");
     //initialize the attributes
     String[] attributes = attributeList.split(",");
     for (String attribute : attributes)
@@ -101,11 +101,22 @@ private static void defineType(PrintWriter writer, String baseName, String class
     }
     writer.println("    }");
 
+    //getters
+    for (String attribute : attributes)
+    {
+        writer.println();
+        // char capital = attribute.charAt(1);
+        String name = attribute.split(" ")[1];
+        String camalcase = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        writer.println("    public " + attribute.split(" ")[0] +" get" + camalcase + "() {");
+        writer.println("        return this." + name + ";");
+        writer.println("    }");
+    }
 
     //attributes
     for (String attribute : attributes)
     {
-        writer.println("    final " + attribute + ";");
+        writer.println("    private final " + attribute + ";");
     }
 
     writer.println("}");
