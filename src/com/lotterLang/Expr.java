@@ -10,12 +10,12 @@ public abstract class Expr
         R visitUnaryExpr(Unary expr);
     }
 
-    abstract <R> R accept(Visitor<R> visitor);
+    public abstract <R> R accept(Visitor<R> visitor);
 
 public static class Binary extends Expr
 {
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public  <R> R accept(Visitor<R> visitor) {
         return visitor.visitBinaryExpr(this);
     }
 
@@ -44,7 +44,7 @@ public static class Binary extends Expr
 public static class Grouping extends Expr
 {
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitGroupingExpr(this);
     }
 
@@ -61,7 +61,7 @@ public static class Grouping extends Expr
 public static class Literal extends Expr
 {
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitLiteralExpr(this);
     }
 
@@ -78,7 +78,7 @@ public static class Literal extends Expr
 public static class Unary extends Expr
 {
     @Override
-    <R> R accept(Visitor<R> visitor) {
+    public <R> R accept(Visitor<R> visitor) {
         return visitor.visitUnaryExpr(this);
     }
 

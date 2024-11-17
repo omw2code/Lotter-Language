@@ -14,6 +14,7 @@ else
     echo
     echo "exiting generate with failure..."
     echo
+    exit 1
 fi
 
 java -cp bin com.lotterLang.tools.GenerateAst 2>&1

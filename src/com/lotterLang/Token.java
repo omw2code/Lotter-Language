@@ -15,6 +15,11 @@ public Token(TokenType type, String lexeme, Object literal, int line)
     this.line = line;
 }
 
+public final String getLexeme()
+{
+    return this.lexeme;
+}
+
 public String toString() 
 {
     return type + " " + lexeme + " " + literal;

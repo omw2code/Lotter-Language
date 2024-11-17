@@ -3,7 +3,7 @@
 usage()
 {
     echo " Usage: $0"
-    echo " -d     : compile and lotter in debug"
+    echo " -d     : compile and execute lotter in debug"
     echo " -l     : compile and execute lotter language in REPL mode"
     echo " -g     : compile and execute AST builder"
     echo " -h     : help"
@@ -35,6 +35,7 @@ while getopts "hdlg" opt; do
 done
 
 if [ -z "${LOTTER_FILES}" ]; then
+    echo "exiting"
     exit 0
 fi
 
@@ -42,7 +43,7 @@ echo "Compiling all java files..."
 
 JAVA_FILES=$(find . -name "*.java")
 
-javac -d ../bin --source-path ./src/com ${JAVA_FILES} 2> >(tee bin/log/eoerror.log)
+javac -d bin --source-path ./src/ ${JAVA_FILES} 2> >(tee bin/log/eoerror.log)
 
 if [[ $? -eq 0 ]]; then 
     echo
@@ -56,4 +57,4 @@ else
     echo
 fi
 
-java "${JAVA_FILES}"
+java -cp bin "${JAVA_FILES}" 2>&1
