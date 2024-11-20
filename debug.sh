@@ -2,7 +2,7 @@
 
 echo "Debugging parser..."
 
-javac -d bin -sourcepath src/ src/com/lotterLang/tools/AstPrinter.java 2> >(tee bin/log/printerError.log)
+javac -d bin -sourcepath ./src/ src/com/lotterLang/tools/AstPrinter.java 2> >(tee bin/log/printerError.log)
 
 if [[ $? -eq 0 ]]; then 
     echo
@@ -17,4 +17,7 @@ else
     exit 1
 fi
 
+echo "Debugging info below..."
+echo
 java -cp bin com.lotterLang.tools.AstPrinter 2>&1
+echo

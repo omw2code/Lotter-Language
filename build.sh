@@ -10,18 +10,19 @@ usage()
 }
 
 # Parse options using getopts
-while getopts "hdlg" opt; do
+while getopts "hdgl" opt; do
     case $opt in
         d)
             ./debug.sh 
             exit 0
             ;;
-        l)
-            LOTTER_FILES="bin.com.lotterLang.Lotter"
-            ;;
         g)
             ./generateAST.sh 
             exit 0
+            ;;
+        l)
+            #TODO: deal with user passed in files
+            LOTTER_FILES="com.lotterLang.Lotter"
             ;;
         h)
             usage
@@ -35,7 +36,7 @@ while getopts "hdlg" opt; do
 done
 
 if [ -z "${LOTTER_FILES}" ]; then
-    echo "exiting"
+    usage
     exit 0
 fi
 
@@ -57,4 +58,7 @@ else
     echo
 fi
 
-java -cp bin "${JAVA_FILES}" 2>&1
+#TODO: deal with user specific files
+echo "Entering REPL mode..."
+
+java -cp bin "${LOTTER_FILES}" 2>&1

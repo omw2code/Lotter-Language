@@ -75,4 +75,4 @@ private static void report(int line, String where, String message)
     hadError = true;
 }
 
-}
+} // class Lotter

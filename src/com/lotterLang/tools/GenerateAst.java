@@ -119,8 +119,8 @@ private static void defineType(PrintWriter writer, String baseName, String class
         writer.println("    private final " + attribute + ";");
     }
 
-    writer.println("}");
+    writer.println("} // class Expr");
 
 }
 
-}
+} // class GenerateAst 

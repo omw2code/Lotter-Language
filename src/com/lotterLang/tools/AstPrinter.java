@@ -50,10 +50,9 @@ public class AstPrinter implements Expr.Visitor<String>
         for (Expr expr : exprs)
         {
             builder.append(" ");
-            builder.append(expr.accept(this));
+            builder.append(expr.accept(this)); //recurse the subexpressions
         }
         builder.append(")");
         return builder.toString();
     }
-    
 }

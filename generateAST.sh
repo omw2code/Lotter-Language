@@ -2,7 +2,7 @@
 
 echo "Generating AST tree..."
 
-javac -d bin -sourcepath src/com/lotterLang/tools src/com/lotterLang/tools/GenerateAst.java 2> >(tee bin/log/genError.log)
+javac -d bin -sourcepath ./src/ src/com/lotterLang/tools/GenerateAst.java 2> >(tee bin/log/genError.log)
 
 if [[ $? -eq 0 ]]; then 
     echo

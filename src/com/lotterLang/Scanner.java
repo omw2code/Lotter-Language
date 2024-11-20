@@ -244,4 +244,4 @@ private void number()
              Double.parseDouble(source_.substring(start_, current_)));
 } 
 
-}
+} // class Scanner

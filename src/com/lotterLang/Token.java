@@ -25,4 +25,4 @@ public String toString()
     return type + " " + lexeme + " " + literal;
 }
 
-}
+} // class Token
