@@ -60,7 +60,7 @@ private static void defineAst(String outputDir, String baseName, List<String> ty
         writer.println();
     }
 
-    writer.println("}");
+    writer.println("} // class Expr");
     writer.close();
 }
 
@@ -119,7 +119,7 @@ private static void defineType(PrintWriter writer, String baseName, String class
         writer.println("    private final " + attribute + ";");
     }
 
-    writer.println("} // class Expr");
+    writer.println("}");
 
 }
 
