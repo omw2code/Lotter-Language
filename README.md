@@ -5,4 +5,6 @@ Implementing this language in java first to deal with the intermediate represent
 
 This project is still under development.
 
-![output-2](https://github.com/user-attachments/assets/556792f6-3830-4283-8962-4c6a4f28bbaf)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fbda59f0-459e-4316-a11f-c0e367fceb6a" alt="output-2">
+</p>
